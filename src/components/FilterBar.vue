@@ -4,8 +4,7 @@
         <label for="sortBy">Sort by</label>
         <select v-model="sortBy">
           <option value="name">Name</option>
-          <option value="types">Type</option>
-          <option value="abilities">Ability</option>
+          <option value="temperature">Temperature</option>
         </select>
       </div>
       <div class="filter-bar__select">
@@ -14,10 +13,6 @@
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
-      </div>
-      <div class="filter-bar__check">
-        <input type="checkbox" id="captured" v-model="captured" />
-        <label for="captured">Captured</label>
       </div>
     </div>
   </template>
@@ -37,10 +32,6 @@
   
   watch(orderBy, (newValue) => {
     emit("orderItems", newValue);
-  });
-  
-  watch(captured, (newValue) => {
-    emit("capturedItems", newValue);
   });
   </script>
   

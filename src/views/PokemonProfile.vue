@@ -1,48 +1,48 @@
 <template>
     <main class="main" v-if="userStore.isLogged">
-        <PokemonItem :pokemon="pokemon"  v-on:delete-pokemon="deletePokemon" />
+        <cityItem :city="city"  v-on:delete-city="deletecity" />
     </main>
 </template>
 <script setup>
 import { ref } from "vue";
-import ApiPokemon from "../composition/Api.js"
-import PokemonItem from "../components/PokemonItem.vue";
+import Apicity from "../composition/Api.js"
+import cityItem from "../components/cityItem.vue";
 import { watch } from "vue";
 import { useStore } from "../store/user.js"
 import { useRouter, useRoute } from 'vue-router'
 const userStore = useStore();
 const router = useRouter()
 const route = useRoute()
-const pokemon = ref()
+const city = ref()
 
 const checkIsLoged = (status) => {
     if (!status) {
         router.push('/');
     }
 }
-const findPokemon = async (pokemonId) => {
+const findcity = async (cityId) => {
     try {
-        pokemon.value = await ApiPokemon.findPokemon(pokemonId)
+        city.value = await Apicity.findcity(cityId)
     }
     catch (error) {
-        console.error('Failed while try to find pokemon: ' + error);
+        console.error('Failed while try to find city: ' + error);
     }
 }
 
-const deletePokemon = async (id) => {
+const deletecity = async (id) => {
   try {
-    await ApiPokemon.deletePokemon(id);
-    alert("Pokemon: " + pokemon.value.name + " already deleted");
+    await Apicity.deletecity(id);
+    alert("city: " + city.value.name + " already deleted");
     router.push('/');
   }
   catch (error) {
-    console.error('Failed while try to delete pokemon: ' + error);
+    console.error('Failed while try to delete city: ' + error);
   }
 }
 
 checkIsLoged(userStore.isLogged)
 if (userStore.isLogged) {
-    findPokemon(route.params.id)
+    findcity(route.params.id)
 }
 
 watch(() => userStore.isLogged, (currentyLogged) => {

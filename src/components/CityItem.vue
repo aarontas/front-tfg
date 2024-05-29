@@ -1,61 +1,35 @@
 <template>
-    <div class="pokemon" :class="pokemon.captured && 'pokemon.captured'">
-        <button v-if="userStore.isLogged && !isFromPokemonProfile" class="delete-pokemon" @click="deletePokemon(pokemon.id)">
-            <img src="../assets/delete-button.svg" alt="Delete pokemon" />
-        </button>
-        <div class="pokemon__image">
-            <img :src="pokemon.sprite" alt="Pokemon cover" />
+    <div class="city" :class="city.captured && 'city.captured'">
+        <div class="city__image">
+            <img :src=city.photoUrl alt="city cover" />
         </div>
-        <div class="pokemon__info">
-            <h2 class="pokemon__name">{{ pokemon.name }}</h2>
+        <div class="city__info">
+            <h2 class="city__name">{{ city.name }}</h2>
         </div>
-        <p class="pokemon__description" v-if="pokemon.description">
-            {{ pokemon.description }}
-        </p>
-        <div class="pokemon__types">
-            <div v-for="pokemonType in pokemon.types" :key="pokemonType" class="pokemon__type" :class="pokemonType.toLowerCase()">  {{ pokemonType }}</div>
+        <div class="city__types">
+            <div v-for="cityType in city.types" :key="cityType" class="city__type" :class="cityType.toLowerCase()">  {{ cityType }}</div>
         </div>
-        <div class="pokemon__abilities">
-            <div class="pokemon__ability" v-for="ability in pokemon.abilities">  {{ ability }} </div>
-        </div>
-        <div class="pokemon__stats">
-            <div class="pokemon__stat">
-                <div class="pokemon__stat-name">HEIGHT</div>
-                <div class="pokemon__stat-value"> {{ pokemon.height }}</div>
-            </div>
-            <div class="pokemon__stat">
-                <div class="pokemon__stat-name">WEIGHT</div>
-                <div class="pokemon__stat-value"> {{ pokemon.weight }}</div>
+        <div class="city__stats">
+            <div class="city__stat">
+                <div class="city__stat-value"> {{ city.temperature }} ºC</div>
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import { useStore } from "../store/user.js"
 
 defineProps({
-    pokemon: {
+    city: {
         type: Object,
         required: true,
     },
-    isFromPokemonProfile: {
-        type: Boolean,
-        default: false,
-    },
 });
 
-
-const userStore = useStore();
-
-const emit = defineEmits(["deletePokemon"]);
-
-const deletePokemon = (id) => {
-    emit("deletePokemon", id);
-};
+const emit = defineEmits(["deletecity"]);
 
 </script>
 <style scoped>
-.pokemon {
+.city {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,11 +44,11 @@ const deletePokemon = (id) => {
     position: relative;
 }
 
-.pokemon.captured {
+.city.captured {
     background-color: #f0f0f0;
 }
 
-.pokemon__image {
+.city__image {
     width: 100%;
     max-width: 200px;
     height: 100%;
@@ -82,13 +56,13 @@ const deletePokemon = (id) => {
     margin-bottom: 1rem;
 }
 
-.pokemon__image img {
+.city__image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.pokemon__info {
+.city__info {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -96,7 +70,7 @@ const deletePokemon = (id) => {
     justify-content: center;
 }
 
-.pokemon__name {
+.city__name {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -104,20 +78,20 @@ const deletePokemon = (id) => {
     text-decoration: none;
 }
 
-.pokemon__description {
+.city__description {
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 1rem;
 }
 
-.pokemon__types {
+.city__types {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
 }
 
-.pokemon__type {
+.city__type {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -126,99 +100,99 @@ const deletePokemon = (id) => {
     margin-right: 0.5rem;
 }
 
-.pokemon__type.fire {
+.city__type.fire {
     background-color: #f08030;
     color: #fff;
 }
 
-.pokemon__type.water {
+.city__type.water {
     background-color: #6890f0;
     color: #fff;
 }
 
-.pokemon__type.grass {
+.city__type.grass {
     background-color: #78c850;
     color: #fff;
 }
 
-.pokemon__type.electric {
+.city__type.electric {
     background-color: #f8d030;
     color: #fff;
 }
 
-.pokemon__type.ice {
+.city__type.ice {
     background-color: #98d8d8;
     color: #fff;
 }
 
-.pokemon__type.fighting {
+.city__type.fighting {
     background-color: #c03028;
     color: #fff;
 }
 
-.pokemon__type.poison {
+.city__type.poison {
     background-color: #a040a0;
     color: #fff;
 }
 
-.pokemon__type.ground {
+.city__type.ground {
     background-color: #e0c068;
     color: #fff;
 }
 
-.pokemon__type.flying {
+.city__type.flying {
     background-color: #a890f0;
     color: #fff;
 }
 
-.pokemon__type.psychic {
+.city__type.psychic {
     background-color: #f85888;
     color: #fff;
 }
 
-.pokemon__type.bug {
+.city__type.bug {
     background-color: #a8b820;
     color: #fff;
 }
 
-.pokemon__type.rock {
+.city__type.rock {
     background-color: #b8a038;
     color: #fff;
 }
 
-.pokemon__type.ghost {
+.city__type.ghost {
     background-color: #705898;
     color: #fff;
 }
 
-.pokemon__type.dragon {
+.city__type.dragon {
     background-color: #7038f8;
     color: #fff;
 }
 
-.pokemon__type.dark {
+.city__type.dark {
     background-color: #705848;
     color: #fff;
 }
 
-.pokemon__type.steel {
+.city__type.steel {
     background-color: #b8b8d0;
     color: #fff;
 }
 
-.pokemon__type.fairy {
+.city__type.fairy {
     background-color: #ee99ac;
     color: #fff;
 }
 
-.pokemon__abilities {
+.city__abilities {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
 }
 
-.pokemon__ability {
+.city__ability {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -229,33 +203,33 @@ const deletePokemon = (id) => {
     color: #000;
 }
 
-.pokemon__stats {
+.city__stats {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.pokemon__stat {
+.city__stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.pokemon__stat-name {
+.city__stat-name {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 0.25rem;
 }
 
-.pokemon__stat-value {
+.city__stat-value {
     font-size: 1rem;
     font-weight: 700;
 }
 
-.delete-pokemon {
+.delete-city {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -265,7 +239,7 @@ const deletePokemon = (id) => {
     cursor: pointer;
 }
 
-.delete-pokemon img {
+.delete-city img {
     width: 20px;
 }
 </style>

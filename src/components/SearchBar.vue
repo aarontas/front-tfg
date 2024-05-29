@@ -2,7 +2,6 @@
     <div class="search-bar">
       <input type="text" placeholder="Search book" v-model="search" />
       <button type="button" class="clear" @click="clearSearch">Clear</button>
-      <button type="button" class="add" @click="showForm">Add</button>
     </div>
   </template>
 <script setup>
@@ -10,14 +9,10 @@ import { ref, watch } from "vue";
 
 const search = ref("");
 
-const emit = defineEmits(["search", "showForm"]);
+const emit = defineEmits(["search"]);
 
 const clearSearch = () => {
   search.value = "";
-};
-
-const showForm = () => {
-  emit("showForm");
 };
 
 watch(search, () => {

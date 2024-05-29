@@ -1,25 +1,25 @@
 <template>
-    <div class="pokemon-list">
-        <div v-for="pokemon in pokemons" :key="pokemon">
-            <router-link :to="`/pokemon/${pokemon.id}`"
+    <div class="city-list">
+        <div v-for="city in citys" :key="city">
+            <router-link :to="`/city/${city.id}`"
             style="text-decoration: none; color: inherit;">
-                <PokemonItem :pokemon="pokemon" :isFromPokemonProfile="true"/>
+                <cityItem :city="city"/>
             </router-link>
         </div>
     </div>
 </template>
 <script setup>
-import PokemonItem from "./PokemonItem.vue";
+import cityItem from "./cityItem.vue";
 
 defineProps({
-    pokemons: {
+    citys: {
         type: Array,
         required: true,
     },
 });
 </script>
 <style scoped>
-.pokemon-list {
+.city-list {
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;

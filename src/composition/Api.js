@@ -47,20 +47,24 @@ export default {
         return req.data.data;
     },
 
-    async deletePokemon(pokemonId){
-        this.getCurrentToken()
+    async getWeather(){
         const req = await axios({
-            method: 'DELETE',
-            url: ROOT + '/pokemon',
-            headers: {
-                authorization: this.currentTokenId
-            },
-            data: {
-                id: pokemonId,
-            }
+            method: 'GET',
+            url: 'http://127.0.0.1:62377/api/v1/WeatherStatus?cityName=Barcelona&startDate=2023-10-01&endDate=2023-10-20'
         })
-        
-        this.checkErrorStatus(req.data)
+        console.log('Test coso: ' + req.data.cityName);
+
+        return req.data;
+    },
+
+    async getCities(){
+        const req = await axios({
+            method: 'GET',
+            url: 'http://127.0.0.1:62377/api/v1/WeatherStatus/cities'
+        })
+
+        console.log('Test Cities: ' + req.data[1].name);
+        return req.data;
     },
 
     async addPokemon(pokemon){

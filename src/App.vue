@@ -4,56 +4,17 @@
       <router-link to="/">
         <img class="logo" src="./assets/uoc-logo.png" alt="UOC logo" />
       </router-link>
-      <h1 class="app-name">Pokedex</h1>
-    </div>
-    <div class="right">
-      <router-link to="/profile">
-        <h1 class="user"> {{ userStore.getName }}</h1>
-      </router-link>
-      <button type="button" class="login-button" v-if="!userStore.isLogged" @click="toggleForm">Login</button>
-      <button type="button" class="logout-button" v-else @click="logOut">Logout</button>
+      <h1 class="app-name">GoodWeather</h1>
     </div>
   </header>
   <div id="app">
     <router-view />
   </div>
-  <ModalLayer v-if="showModal" v-on:closeModal="toggleForm()" :loginModal="true">
-    <template v-slot:header>
-      <h2>Login</h2>
-    </template>
-    <template v-slot:body>
-      <LoginForm v-on:loginUser="loginUser" />
-    </template>
-  </ModalLayer>
 </template>
 
-
 <script setup>
-import LoginForm from "./components/LoginForm.vue";
-import ModalLayer from "./components/ModalLayer.vue";
 import { useStore } from "./store/user.js"
-import { ref } from 'vue';
 const userStore = useStore();
-const showModal = ref(false);
-
-const toggleForm = () => {
-  showModal.value = !showModal.value;
-}
-
-const loginUser = async (userLoginInfo) => {
-  try {
-    await userStore.setUserData(userLoginInfo.email, userLoginInfo.password);
-    toggleForm();
-  }
-  catch (error) {
-    console.error('Failed while login: ' + error)
-  }
-}
-
-const logOut = () => {
-  userStore.$reset()
-}
-
 </script>
 
 
