@@ -1,8 +1,8 @@
 <template>
   <SearchBar v-on:showForm="toggleForm" v-on:search="setSearchTerm" />
-  <FilterBar v-on:sortItems="sortcitys" v-on:orderItems="ordercitys" v-on:capturedItems="capturedcitys" />
+  <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities" v-on:capturedItems="capturedcities" />
   <main class="main">
-    <cityList :citys="filteredcitys" />
+    <cityList :cities="filteredcities" />
   </main>
 </template>
 <script setup>
@@ -33,13 +33,13 @@ const setSearchTerm = (value) => {
   searchTerm.value = value;
 }
 
-const sortcitys = (value) => {
+const sortcities = (value) => {
   sortBy.value = value;
 }
-const ordercitys = (value) => {
+const ordercities = (value) => {
   orderBy.value = value;
 }
-const capturedcitys = (value) => {
+const capturedcities = (value) => {
   captured.value = value;
 }
 
@@ -49,7 +49,7 @@ watch(() => userStore.isLogged, () => {
   fetchCities()
 })
 
-const filteredcitys = computed(() => {
+const filteredcities = computed(() => {
   let tempcityList = citiesList.value;
 
   tempcityList = citiesList.value.sort((a, b) => {

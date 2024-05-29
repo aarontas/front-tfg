@@ -12,12 +12,6 @@
   </div>
 </template>
 
-<script setup>
-import { useStore } from "./store/user.js"
-const userStore = useStore();
-</script>
-
-
 <style scoped>
 body {
   padding: 0;

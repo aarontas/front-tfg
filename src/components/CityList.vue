@@ -1,6 +1,6 @@
 <template>
     <div class="city-list">
-        <div v-for="city in citys" :key="city">
+        <div v-for="city in cities" :key="city">
             <router-link :to="`/city/${city.id}`"
             style="text-decoration: none; color: inherit;">
                 <cityItem :city="city"/>
@@ -12,7 +12,7 @@
 import cityItem from "./cityItem.vue";
 
 defineProps({
-    citys: {
+    cities: {
         type: Array,
         required: true,
     },
