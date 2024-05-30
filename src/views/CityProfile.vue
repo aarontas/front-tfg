@@ -6,7 +6,7 @@
 <script setup>
 import { ref } from "vue";
 import Apicity from "../composition/Api.js"
-import cityItem from "../components/cityItem.vue";
+import cityItem from "../components/CityItem.vue";
 import { watch } from "vue";
 import { useRouter, useRoute } from 'vue-router'
 const userStore = useStore();

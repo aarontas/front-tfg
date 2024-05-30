@@ -1,5 +1,5 @@
 <template>
-  <SearchBar v-on:search="setSearchTerm" :cities="filteredcities"/>
+  <SearchBar v-on:search="setSearchTerm" v-on:selectCity="setSelectCityName" :cities="filteredcities"/>
   <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities" v-on:capturedItems="capturedcities" />
   <main class="main">
     <CityList :cities="filteredcities" />
@@ -14,6 +14,7 @@ import { ref, watch, computed } from 'vue';
 
 const citiesList = ref([])
 const searchTerm = ref("")
+const selectCityName = ref("")
 const sortBy = ref("name")
 const orderBy = ref("asc")
 const captured = ref(false)
@@ -29,6 +30,11 @@ const fetchCities = async () => {
 
 const setSearchTerm = (value) => {
   searchTerm.value = value;
+  console.log('City selected: ' + searchTerm.value)
+}
+
+const setSelectCityName = (value) => {
+  selectCityName.value = value;
 }
 
 const sortcities = (value) => {

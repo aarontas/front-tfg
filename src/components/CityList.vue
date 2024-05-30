@@ -9,7 +9,7 @@
     </div>
 </template>
 <script setup>
-import CityItem from "./cityItem.vue";
+import CityItem from "./CityItem.vue";
 
 defineProps({
     cities: {
