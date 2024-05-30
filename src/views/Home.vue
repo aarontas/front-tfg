@@ -63,10 +63,7 @@ const filteredcities = computed(() => {
     tempcityList = citiesList.value.filter((city) => {
       return (
         city.name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-        city.types.some((item) =>
-          item.toLowerCase().includes(searchTerm.value.toLowerCase())
-        ) ||
-        city.abilities.some((item) =>
+        city.temperature.some((item) =>
           item.toLowerCase().includes(searchTerm.value.toLowerCase())
         )
       );

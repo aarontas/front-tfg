@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
-import Pokemon from '../views/PokemonProfile.vue'
+import City from '../views/CityProfile.vue'
 const routes = [
     {
         path: '/',
@@ -14,9 +14,9 @@ const routes = [
         component: Profile
     },
     {
-        path: '/pokemon/:id',
-        name: 'Pokemon',
-        component: Pokemon
+        path: '/city/:id',
+        name: 'City',
+        component: City
     },
     {
         path: '/:pathMatch(.*)*',

@@ -1,6 +1,6 @@
 <template>
     <div class="search-bar">
-      <input type="text" placeholder="Search book" v-model="search" />
+      <input type="text" placeholder="Search City" v-model="search" />
       <button type="button" class="clear" @click="clearSearch">Clear</button>
     </div>
   </template>

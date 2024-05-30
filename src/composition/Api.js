@@ -58,7 +58,7 @@ export default {
     async getCities(){
         const req = await axios({
             method: 'GET',
-            url: 'http://127.0.0.1:62377/api/v1/WeatherStatus/cities'
+            url: 'http://127.0.0.1:55302/api/v1/WeatherStatus/cities'
         })
 
         return req.data;
