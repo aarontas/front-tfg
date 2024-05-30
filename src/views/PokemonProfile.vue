@@ -8,7 +8,6 @@ import { ref } from "vue";
 import Apicity from "../composition/Api.js"
 import cityItem from "../components/cityItem.vue";
 import { watch } from "vue";
-import { useStore } from "../store/user.js"
 import { useRouter, useRoute } from 'vue-router'
 const userStore = useStore();
 const router = useRouter()

@@ -1,5 +1,5 @@
 <template>
-  <SearchBar v-on:showForm="toggleForm" v-on:search="setSearchTerm" />
+  <SearchBar v-on:search="setSearchTerm" />
   <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities" v-on:capturedItems="capturedcities" />
   <main class="main">
     <cityList :cities="filteredcities" />
@@ -10,10 +10,8 @@ import Apicity from "../composition/Api.js"
 import cityList from "../components/CityList.vue";
 import SearchBar from "../components/SearchBar.vue";
 import FilterBar from "../components/FilterBar.vue";
-import { useStore } from "../store/user.js"
 import { ref, watch, computed } from 'vue';
 
-const userStore = useStore();
 const citiesList = ref([])
 const searchTerm = ref("")
 const sortBy = ref("name")
@@ -44,10 +42,6 @@ const capturedcities = (value) => {
 }
 
 fetchCities()
-
-watch(() => userStore.isLogged, () => {
-  fetchCities()
-})
 
 const filteredcities = computed(() => {
   let tempcityList = citiesList.value;

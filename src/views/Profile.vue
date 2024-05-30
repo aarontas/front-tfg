@@ -16,7 +16,6 @@
 
 <script setup>
 import { watch } from "vue";
-import { useStore } from "../store/user.js"
 import { useRouter } from 'vue-router'
 const userStore = useStore();
 const router = useRouter()
