@@ -1,5 +1,5 @@
 <template>
-    <div class="city" :class="city.captured && 'city.captured'">
+    <div class="city">
         <div class="city__image">
             <img :src=city.photoUrl alt="city cover" />
         </div>
