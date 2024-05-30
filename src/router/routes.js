@@ -14,7 +14,7 @@ const routes = [
         component: Profile
     },
     {
-        path: '/city/:id',
+        path: '/city/:name',
         name: 'City',
         component: City
     },

@@ -1,15 +1,15 @@
 <template>
     <div class="city-list">
         <div v-for="city in cities" :key="city">
-            <router-link :to="`/city/${city.id}`"
+            <router-link :to="`/city/${city.name}`"
             style="text-decoration: none; color: inherit;">
-                <cityItem :city="city"/>
+                <CityItem :city="city"/>
             </router-link>
         </div>
     </div>
 </template>
 <script setup>
-import cityItem from "./cityItem.vue";
+import CityItem from "./cityItem.vue";
 
 defineProps({
     cities: {

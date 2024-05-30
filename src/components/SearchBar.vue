@@ -3,9 +3,27 @@
       <input type="text" placeholder="Search City" v-model="search" />
       <button type="button" class="clear" @click="clearSearch">Clear</button>
     </div>
+    <div class="filter-bar">
+      <div class="filter-bar__select" >
+        <div >
+        <label for="sortBy">Sort by</label>
+        <select v-model="sortBy">
+          <option v-for="city in cities" :key="city" :value=city.name>{{city.name}}</option>
+        </select>
+        <button type="button" class="Buscar" @click="Buscar">Clear</button>
+      </div>
+    </div>
+    </div>
   </template>
 <script setup>
 import { ref, watch } from "vue";
+
+defineProps({
+    cities: {
+        type: Array,
+        required: true,
+    },
+});
 
 const search = ref("");
 

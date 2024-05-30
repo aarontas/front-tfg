@@ -1,13 +1,13 @@
 <template>
-  <SearchBar v-on:search="setSearchTerm" />
+  <SearchBar v-on:search="setSearchTerm" :cities="filteredcities"/>
   <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities" v-on:capturedItems="capturedcities" />
   <main class="main">
-    <cityList :cities="filteredcities" />
+    <CityList :cities="filteredcities" />
   </main>
 </template>
 <script setup>
 import Apicity from "../composition/Api.js"
-import cityList from "../components/CityList.vue";
+import CityList from "../components/CityList.vue";
 import SearchBar from "../components/SearchBar.vue";
 import FilterBar from "../components/FilterBar.vue";
 import { ref, watch, computed } from 'vue';
