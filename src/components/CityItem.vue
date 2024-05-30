@@ -6,9 +6,6 @@
         <div class="city__info">
             <h2 class="city__name">{{ city.name }}</h2>
         </div>
-        <div class="city__types">
-            <div v-for="cityType in city.types" :key="cityType" class="city__type" :class="cityType.toLowerCase()">  {{ cityType }}</div>
-        </div>
         <div class="city__stats">
             <div class="city__stat">
                 <div class="city__stat-value"> {{ city.temperature }} ºC</div>
@@ -24,8 +21,6 @@ defineProps({
         required: true,
     },
 });
-
-const emit = defineEmits(["deletecity"]);
 
 </script>
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
     <main class="main" v-if="userStore.isLogged">
-        <cityItem :city="city"  v-on:delete-city="deletecity" />
+        <cityItem :city="city"/>
     </main>
 </template>
 <script setup>
@@ -14,11 +14,6 @@ const router = useRouter()
 const route = useRoute()
 const city = ref()
 
-const checkIsLoged = (status) => {
-    if (!status) {
-        router.push('/');
-    }
-}
 const findcity = async (cityId) => {
     try {
         city.value = await Apicity.findcity(cityId)
@@ -26,17 +21,6 @@ const findcity = async (cityId) => {
     catch (error) {
         console.error('Failed while try to find city: ' + error);
     }
-}
-
-const deletecity = async (id) => {
-  try {
-    await Apicity.deletecity(id);
-    alert("city: " + city.value.name + " already deleted");
-    router.push('/');
-  }
-  catch (error) {
-    console.error('Failed while try to delete city: ' + error);
-  }
 }
 
 checkIsLoged(userStore.isLogged)
