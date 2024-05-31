@@ -32,7 +32,6 @@ onBeforeMount(() => setQueryParams());
 
 const setQueryParams = async () =>{
     cityResponse.value = await Apicity.getWeather(route.query.name, route.query.startdate, route.query.enddate);
-    cityName.value = cityResponse.cityName;
 }
 
 
@@ -51,10 +50,6 @@ const setQueryParams = async () =>{
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     position: relative;
-}
-
-.city.captured {
-    background-color: #f0f0f0;
 }
 
 .city__image {
@@ -87,131 +82,6 @@ const setQueryParams = async () =>{
     text-decoration: none;
 }
 
-.city__description {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-}
-
-.city__types {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.city__type {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-}
-
-.city__type.fire {
-    background-color: #f08030;
-    color: #fff;
-}
-
-.city__type.water {
-    background-color: #6890f0;
-    color: #fff;
-}
-
-.city__type.grass {
-    background-color: #78c850;
-    color: #fff;
-}
-
-.city__type.electric {
-    background-color: #f8d030;
-    color: #fff;
-}
-
-.city__type.ice {
-    background-color: #98d8d8;
-    color: #fff;
-}
-
-.city__type.fighting {
-    background-color: #c03028;
-    color: #fff;
-}
-
-.city__type.poison {
-    background-color: #a040a0;
-    color: #fff;
-}
-
-.city__type.ground {
-    background-color: #e0c068;
-    color: #fff;
-}
-
-.city__type.flying {
-    background-color: #a890f0;
-    color: #fff;
-}
-
-.city__type.psychic {
-    background-color: #f85888;
-    color: #fff;
-}
-
-.city__type.bug {
-    background-color: #a8b820;
-    color: #fff;
-}
-
-.city__type.rock {
-    background-color: #b8a038;
-    color: #fff;
-}
-
-.city__type.ghost {
-    background-color: #705898;
-    color: #fff;
-}
-
-.city__type.dragon {
-    background-color: #7038f8;
-    color: #fff;
-}
-
-.city__type.dark {
-    background-color: #705848;
-    color: #fff;
-}
-
-.city__type.steel {
-    background-color: #b8b8d0;
-    color: #fff;
-}
-
-.city__type.fairy {
-    background-color: #ee99ac;
-    color: #fff;
-}
-
-.city__abilities {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.city__ability {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-    background-color: #f8f8f8;
-    color: #000;
-}
-
 .city__stats {
     width: 100%;
     display: flex;
@@ -240,19 +110,5 @@ const setQueryParams = async () =>{
 .city__stat-value-score {
     font-size: 2rem;
     font-weight: 700;
-}
-
-.delete-city {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-.delete-city img {
-    width: 20px;
 }
 </style>
