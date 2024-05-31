@@ -1,6 +1,6 @@
 <template>
-  <SearchBar v-on:search="setSearchTerm" v-on:selectCity="setSelectCityName" :cities="filteredcities"/>
-  <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities" v-on:capturedItems="capturedcities" />
+  <SearchBar v-on:selectCity="setSelectCityName" :cities="filteredcities"/>
+  <FilterBar v-on:sortItems="sortcities" v-on:orderItems="ordercities"/>
   <main class="main">
     <CityList :cities="filteredcities" />
   </main>
@@ -17,7 +17,6 @@ const searchTerm = ref("")
 const selectCityName = ref("")
 const sortBy = ref("name")
 const orderBy = ref("asc")
-const captured = ref(false)
 
 const fetchCities = async () => {
   try {
@@ -26,10 +25,6 @@ const fetchCities = async () => {
   catch (error) {
     console.error('Failed while fetch city list.' + error);
   }
-}
-
-const setSearchTerm = (value) => {
-  searchTerm.value = value;
 }
 
 const setSelectCityName = (value) => {
@@ -41,9 +36,6 @@ const sortcities = (value) => {
 }
 const ordercities = (value) => {
   orderBy.value = value;
-}
-const capturedcities = (value) => {
-  captured.value = value;
 }
 
 fetchCities()
@@ -61,19 +53,7 @@ const filteredcities = computed(() => {
   if (orderBy.value === "desc") {
     tempcityList = citiesList.value.reverse();
   }
-
-  if (!searchTerm.value) {
-    return tempcityList;
-  } else {
-    tempcityList = citiesList.value.filter((city) => {
-      return (
-        city.name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-        city.temperature.some((item) =>
-          item.toLowerCase().includes(searchTerm.value.toLowerCase())
-        )
-      );
-    });
-  }
+  
   return tempcityList;
 })
 
