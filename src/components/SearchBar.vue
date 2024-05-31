@@ -1,7 +1,6 @@
 <template>
     <div class="filter-bar">
       <div class="filter-bar__select" >
-        <div >
         <label for="selectCity">City</label>
         <select v-model="selectCity">
           <option v-for="city in cities" :key="city" :value=city.name>{{city.name}}</option>
@@ -10,10 +9,8 @@
         <input type="date" class="filter-bar__date" v-model="startDate"/>
         <label>     End Date </label>
         <input type="date" class="filter-bar__date" v-model="endDate"/>
-
         <button type="button" class="Buscar" @click="buscar(selectCity, startDate, endDate)">Buscar</button>
       </div>
-    </div>
     </div>
   </template>
 <script setup>
@@ -39,10 +36,6 @@ const buscar = (cityName, start, end) => {
 
 </script>
 <style scoped>
-.search-bar .add {
-  background-color: #4caf50;
-  color: #fff;
-}
 .filter-bar {
   display: flex;
   align-items: center;

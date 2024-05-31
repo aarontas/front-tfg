@@ -8,7 +8,7 @@
         </select>
       </div>
       <div class="filter-bar__select">
-        <label for="orderBy">Sort by</label>
+        <label for="orderBy">Order by</label>
         <select v-model="orderBy">
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
@@ -22,9 +22,8 @@
   
   const sortBy = ref("name");
   const orderBy = ref("asc");
-  const captured = ref(false);
   
-  const emit = defineEmits(["sortItems", "orderItems", "capturedItems"]);
+  const emit = defineEmits(["sortItems", "orderItems"]);
   
   watch(sortBy, (newValue) => {
     emit("sortItems", newValue);
@@ -56,16 +55,6 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-}
-.filter-bar__check {
-  display: flex;
-  align-items: center;
-}
-.filter-bar__check input {
-  margin-right: 10px;
-}
-.filter-bar__check label {
-  cursor: pointer;
 }
   </style>
   
