@@ -19,6 +19,8 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from 'vue-router'
+const startDate = ref()
+const endDate = ref()
 
 defineProps({
     cities: {

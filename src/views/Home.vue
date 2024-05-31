@@ -22,7 +22,6 @@ const captured = ref(false)
 const fetchCities = async () => {
   try {
     citiesList.value = await Apicity.getCities();
-    console.log('Ciudades' + citiesList.value)
   }
   catch (error) {
     console.error('Failed while fetch city list.' + error);
@@ -31,7 +30,6 @@ const fetchCities = async () => {
 
 const setSearchTerm = (value) => {
   searchTerm.value = value;
-  console.log('City selected: ' + searchTerm.value)
 }
 
 const setSelectCityName = (value) => {

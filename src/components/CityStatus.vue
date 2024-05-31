@@ -20,13 +20,6 @@
 </template>
 <script setup>
 
-defineProps({
-    city: {
-        type: Object,
-        required: true,
-    },
-});
-
 import { useRoute } from 'vue-router'
 import Apicity from "../composition/Api.js"
 import { ref } from "vue";
