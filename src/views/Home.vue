@@ -13,7 +13,6 @@ import FilterBar from "../components/FilterBar.vue";
 import { ref, computed } from 'vue';
 
 const citiesList = ref([])
-const searchTerm = ref("")
 const selectCityName = ref("")
 const sortBy = ref("name")
 const orderBy = ref("asc")
@@ -53,7 +52,7 @@ const filteredcities = computed(() => {
   if (orderBy.value === "desc") {
     tempcityList = citiesList.value.reverse();
   }
-  
+
   return tempcityList;
 })
 
