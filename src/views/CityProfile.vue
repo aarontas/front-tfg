@@ -1,8 +1,8 @@
 <template>
     <main class="main">
-        <cityItem :city="city"/>
+        <CityStatus/>
     </main>
 </template>
 <script setup>
-import cityItem from "../components/CityItem.vue";
+import CityStatus from "../components/CityStatus.vue";
 </script>

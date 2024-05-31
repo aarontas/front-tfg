@@ -10,7 +10,7 @@ import Apicity from "../composition/Api.js"
 import CityList from "../components/CityList.vue";
 import SearchBar from "../components/SearchBar.vue";
 import FilterBar from "../components/FilterBar.vue";
-import { ref, watch, computed } from 'vue';
+import { ref, computed } from 'vue';
 
 const citiesList = ref([])
 const searchTerm = ref("")
@@ -22,6 +22,7 @@ const captured = ref(false)
 const fetchCities = async () => {
   try {
     citiesList.value = await Apicity.getCities();
+    console.log('Ciudades' + citiesList.value)
   }
   catch (error) {
     console.error('Failed while fetch city list.' + error);

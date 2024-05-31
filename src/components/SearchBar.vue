@@ -6,13 +6,19 @@
         <select v-model="selectCity">
           <option v-for="city in cities" :key="city" :value=city.name>{{city.name}}</option>
         </select>
-        <button type="button" class="Buscar" @click="buscar">Buscar</button>
+        <label>     Start Date </label>
+        <input type="date" class="filter-bar__date" v-model="startDate"/>
+        <label>     End Date </label>
+        <input type="date" class="filter-bar__date" v-model="endDate"/>
+
+        <button type="button" class="Buscar" @click="buscar(selectCity, startDate, endDate)">Buscar</button>
       </div>
     </div>
     </div>
   </template>
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
+import { useRouter } from 'vue-router'
 
 defineProps({
     cities: {
@@ -21,17 +27,14 @@ defineProps({
     },
 });
 
+const router = useRouter()
 const selectCity = ref("");
 
-const emit = defineEmits(["search", "selectCity"]);
+const buscar = (cityName, start, end) => {
+  router.push({
+    path: '/city', query: { name: cityName, startdate: start, enddate: end } });
+  }
 
-const buscar = () => {
-  selectCity.value = "";
-};
-
-watch(selectCity, () => {
-  emit("selectCity", selectCity.value);
-});
 </script>
 <style scoped>
 .search-bar .add {
@@ -60,6 +63,14 @@ watch(selectCity, () => {
   outline: none;
 }
 .filter-bar button {
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  min-width: 100px;
+}
+.filter-bar__date {
   padding: 10px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
