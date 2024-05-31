@@ -1,10 +1,7 @@
 <template>
     <div class="city-list">
         <div v-for="city in cities" :key="city">
-            <router-link :to="`/city/${city.name}`"
-            style="text-decoration: none; color: inherit;">
-                <CityItem :city="city"/>
-            </router-link>
+            <CityItem :city="city"/>
         </div>
     </div>
 </template>
