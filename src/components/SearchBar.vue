@@ -56,6 +56,7 @@ const buscar = (cityName, start, end) => {
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
+  margin-right: 20px;
 }
 .filter-bar button {
   padding: 10px;
@@ -66,11 +67,12 @@ const buscar = (cityName, start, end) => {
   min-width: 100px;
 }
 .filter-bar__date {
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
   min-width: 100px;
+  margin-right: 20px;
 }
 </style>
